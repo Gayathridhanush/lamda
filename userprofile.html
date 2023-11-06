@@ -14,8 +14,7 @@
         padding: 0;
         font-family: 'Poppins', sans-serif;
         background-color: #ddd;
-        align-items: center;
-        justify-content: center;
+       
     }
 
     *{
@@ -36,10 +35,11 @@
         align-items: center;
         text-align: center;
         font-size: 20px;
-        background-color:  #0d1425;
+        background-color:  #485a86;
         color: #fff;
         padding: 30px 30px;
         border-radius: 20px;
+        height: 100%;
     }
 
     .box img{
@@ -60,63 +60,19 @@
         font-weight: 100;
     }
 
-    .box ul li i{
+    .box ul li {
         cursor: pointer;
         margin: 10px;
-        font-size: 40px;
+        
     }
 
-    .box ul li i:hover{
+    .box ul li :hover{
         opacity: 0.6;
     }
-
-    .About{
-        margin-left: 20px;
-        flex: 50%;
-        display: table;
-        padding: 30px 30px;
-        font-size: 20px;
-        background-color: #b286d1;
-        border-radius: 20px;
-    }
-
-    .About h1{
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        font-size: 50px;
-        font-weight: 500;
-    }
-
-    .About ul li{
+    .About ul li {
         list-style: none;
     }
 
-    .About ul{
-        margin-top: 20px;
-    }
-    .accordion {
-  background-color: #eee;
-  color: #444;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-  transition: 0.4s;
-}
-
-.active, .accordion:hover {
-  background-color: #ccc; 
-}
-
-.About {
-  padding: 0 18px;
-  display: none;
-  background-color: white;
-  overflow: hidden;
-}
 
     @media screen and (max-width: 1068px) {
         .container{
@@ -137,41 +93,101 @@
             text-align: center;
         }
     }
+    * {box-sizing: border-box}
+body {font-family: "Lato", sans-serif;}
+
+/* Style the tab */
+.tab {
+  float: left;
+  border: 1px solid #0c0b0b;
+  background-color: #1b1919;
+  width: 30%;
+  height: 300px;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: black;
+  padding: 22px 16px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 10px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #1a1818;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+  background-color: #131010;
+}
+
+/* Style the tab content */
+.tabcontent {
+    position:absolute;
+  float: left;
+  padding: 0px 12px;
+  border: 1px solid #381a1a;
+  width: 60%;
+  border-left: none;
+  height: 150px;
+  display: none;
+  background-color: #667291;
+}
+
+    .clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
 </style>
 <script>
-    var acc = document.getElementsByClassName("accordion");
-    var i;
-
-    for (i = 0; i < acc.length; i++) {
-      acc[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        var about = this.parentElement.querySelector(".About");
-        if (about.style.display === "block" || about.style.display === "") {
-          about.style.display = "none";
-        } else {
-          about.style.display = "block";
-        }
-      });
+    function openCity(evt, cityName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " active";
     }
-</script>
+    </script>
 
 <body>
     <div class="container">
         <div class="box">
-            <img src="image/mark.jpg" alt="">
+            <img src="img/mark.jpg" alt="">
             <ul>
-                <li>Mark Elliot Zuckerberg</li>
-                <li>Co-founded of Facebook</li>
-                <li>Harvard University</li>
+                <li style="font-size: 16px; margin-right: 30px;">Mark Elliot Zuckerberg</li>
+                <li style="font-size: 12px; margin-right: 30px;">Co-founded of Facebook</li>
+                <a class="tablinks" onmouseover="openCity(event, 'Harvard')" onmouseout="document.getElementById('Harvard').style.display = 'none';" style="font-size: 12px; margin-right: 30px;" href="https://en.wikipedia.org/wiki/Harvard_University">Harvard University</a>
                
             </ul>
+            <div id="Harvard" class="tabcontent">
+                <h3>Harvard University</h3>
+                <p style="font-size: 10px;">Harvard College is the undergraduate college of Harvard University, a private Ivy League research 
+                    university in Cambridge, Massachusetts. Part of the Faculty of Arts and Sciences, Harvard College
+                     is Harvard University's traditional undergraduate program, offering AB and SB degrees. It is highly selectiv</p>
+              </div>
+              <div class="clearfix"></div>
             <div style="margin-top: 40px;">
                 <a href="https://www.instagram.com/zuck/?img_index=1"><i class="fa fa-instagram"></i></a> 
                 <a href="https://twitter.com/finkd?lang=en"><i class="fa fa-twitter"></i></a>  
                 <a href="https://www.linkedin.com/in/mark-zuckerberg-618bba58"><i class="fa fa-linkedin"></i></a>  
                 <a href="https://www.facebook.com/zuck/?locale=vi_VN"><i class="fa fa-facebook"></i></a>
               </div>
-            <button class="accordion">About My Profile</button>  
+              
         </div>
         <div class="About">
             <ul>
